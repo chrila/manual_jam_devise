@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :stories
+  get '/stories_user', to: 'stories#user', as: 'user_stories'
   root 'stories#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -20,7 +20,7 @@
           <ul class="dropdown-menu">
           <% if signed_in? %>
             <li><%=link_to 'Create PicStory', new_story_path %></li>
-            <li><%=link_to 'My PicStories', stories_path %></li>
+            <li><%=link_to 'My PicStories', user_stories_path %></li>
             <li><%= link_to "My Profile", edit_user_registration_path %></li>
             <li role="separator" class="divider"></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, method: "delete" %></li>

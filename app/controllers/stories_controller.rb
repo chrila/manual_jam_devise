@@ -21,6 +21,11 @@ class StoriesController < ApplicationController
   def edit
   end
 
+  # GET /stories/user
+  def user
+    @stories = Story.where(user: current_user)
+  end
+
   # POST /stories
   # POST /stories.json
   def create
