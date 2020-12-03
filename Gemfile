@@ -55,3 +55,7 @@ end
 
 # use devise for authentication
 gem 'devise'
+
+# use bootstrap
+gem 'bootstrap'
+gem 'jquery-rails'
