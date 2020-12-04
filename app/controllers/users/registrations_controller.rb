@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :authorize_admin
 
   # GET /users/admin
   def admin
@@ -66,6 +67,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:name, :admin])
+  end
+
+  def authorize_admin
+    unless signed_in? && current_user.admin?
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: 'Access denied.' }
+      end
+    end
   end
 
   # The path used after sign up.
