@@ -4,6 +4,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
+  # GET /users/admin
+  def admin
+    @users = User.all
+  end
+
+  # DELETE /users/1
+  def destroy
+    if params[:user_id].present?
+      @user = User.find(params[:user_id])
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to user_admin_path, notice: 'User was successfully destroyed.' }
+      end
+    else
+      super
+    end
+  end
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -21,7 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   # def update
-  #   super
+  #  super
   # end
 
   # DELETE /resource
