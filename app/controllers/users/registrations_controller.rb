@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  before_action :authorize_admin, only: :admin
+  before_action :authorize_admin, only: [:admin, :toggle_admin]
 
   # GET /users/admin
   def admin
@@ -20,6 +20,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     else
       super
+    end
+  end
+
+  def toggle_admin
+    @user = User.find(params[:user_id])
+    @user.admin = !@user.admin
+    @user.save
+    respond_to do |format|
+      format.html { redirect_to user_admin_path }
     end
   end
 

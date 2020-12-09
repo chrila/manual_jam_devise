@@ -24,7 +24,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/user
   def user
-    @stories = Story.where(user: current_user)
+    @stories = current_user.stories
   end
 
   # POST /stories

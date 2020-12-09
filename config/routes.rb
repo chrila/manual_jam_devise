@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/admin', to: 'users/registrations#admin', as: 'user_admin'
     delete '/users/:user_id', to: 'users/registrations#destroy', as: 'user_registration_id'
+    post '/users/toggle_admin/:user_id', to: 'users/registrations#toggle_admin', as: 'user_toggle_admin'
   end
 
   resources :stories

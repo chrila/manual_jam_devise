@@ -19,7 +19,8 @@
         <td><%= user.email %></td>
         <td><%= user.stories.length %></td>
         <td>
-          <%= link_to "Delete", user_registration_id_path(user), method: "delete" %>
+          <%= link_to "Delete", user_registration_id_path(user), method: "delete" %> | 
+          <%= link_to "Admin: #{user.admin ? 'Yes' : 'No'}", user_toggle_admin_path(user), method: "post" %>
         </td>
       </tr>
     <% end %>
