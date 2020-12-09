@@ -1,3 +1,9 @@
+# Heroku
+
+La aplicación está en Heroku. Para verla, abre el siguiente link:
+https://pictory-g39-chris.herokuapp.com
+
+
 # Actividad Presencial I
 ## Autenticación Manual desde cero
 
